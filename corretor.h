@@ -2,6 +2,8 @@
 #define CORRETOR
 
 #include <string>
+#include <vector>
+#include "imovel.h"
 
 class Corretor {
 private:
@@ -12,22 +14,30 @@ private:
     bool avaliador;
     double lat;
     double lng;
+    std::vector<Imovel*> imoveisAgendados;
 
 public:
-    Corretor(std::string nome, std::string telefone, bool avaliador, double lat, double lng);
-    
-    int getId();
-    std::string getNome();
-    std::string getTelefone();
-    bool isAvaliador();
-    double getLat();
-    double getLng();
+    Corretor(const std::string& telefone, bool avaliador, double lat, double lng, const std::string& nome);
 
-    void setNome(std::string nNome);
-    void setTelefone(std::string nTelefone);
-    void setAvaliador(bool ehAval);
-    void setLat(double nLat);
-    void setLng(double nLng);
+    // Getters
+    int getId() const;
+    std::string getNome() const;
+    std::string getTelefone() const;
+    bool isAvaliador() const;
+    double getLat() const;
+    double getLng() const;
+    const std::vector<Imovel*>& getImoveisAgendados() const;
+
+    // Setters
+    void setNome(const std::string& novoNome);
+    void setTelefone(const std::string& novoTelefone);
+    void setAvaliador(bool avaliador);
+    void setLat(double novaLat);
+    void setLng(double novaLng);
+
+    // Agendamento
+    void adicionarImovel(Imovel* imovel);
+    void limparAgendamentos();
 };
 
 #endif

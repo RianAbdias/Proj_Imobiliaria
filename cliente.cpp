@@ -1,4 +1,5 @@
 #include "cliente.h"
+#include <iostream>
 
 //iniciar var estática
 int Cliente::guardaid = 1;
